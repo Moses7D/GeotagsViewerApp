@@ -2,23 +2,25 @@ package database;
 
 import android.location.Location;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class GeoMarker {
     public int colour;
     public String[] sensorData;
     public String description;
-    public Location location;
+    public LatLng location;
 
     public GeoMarker() {
     }
 
-    public GeoMarker( int colour, String[] sensorData, String description, Location location) {
+    public GeoMarker( int colour, String[] sensorData, String description, LatLng location) {
         this.colour = colour;
         this.sensorData = sensorData;
         this.description = description;
         this.location = location;
     }
 
-    public GeoMarker(String[] sensorData, Location location) {
+    public GeoMarker(String[] sensorData, LatLng location) {
         this.sensorData = sensorData;
         this.location = location;
     }
@@ -47,11 +49,11 @@ public class GeoMarker {
         this.description = description;
     }
 
-    public Location getLocation() {
+    public LatLng getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(LatLng location) {
         this.location = location;
     }
 }
