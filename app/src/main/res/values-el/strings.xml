@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sensor_names">
+        <item>Φωτός</item>
+        <item>Ατμοσφαιρικής Πίεσης</item>
+        <item>Υγρασίας</item>
+        <item>Θερμοκρασίας</item>
+    </string-array>
+</resources>

@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">GeotagsViewerApp</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="app_name" translatable="false">Geo-tags Viewer App</string>
+    <string-array name="sensor_names">
+        <item>Light</item>
+        <item>Pressure</item>
+        <item>Humidity</item>
+        <item>Temperature</item>
+    </string-array>
 </resources>
