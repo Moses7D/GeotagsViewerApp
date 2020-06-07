@@ -14,7 +14,8 @@ public class MarkerOptionsFactory {
 
     /**
      * Produces a {@link MarkerOptions} object with the data from the given {@link GeoMarker}
-     * @param geoMarker the object to get data from
+     *
+     * @param geoMarker                the object to get data from
      * @param sensorsTypeCodesNamesMap the mapping of the sensor codes to their desired names for GUI purposes,
      *                                 mapping must be code based, since the desired field is the name.
      * @return a MarkerOptions object ready to be used to produce a marker.
@@ -24,18 +25,25 @@ public class MarkerOptionsFactory {
                 .position(toLatLng(geoMarker.location))
                 .icon(gerColouredMarker(geoMarker.hue));
         String description = "";
-        if (geoMarker.title != null || !geoMarker.title.isEmpty()) {
-            //If there is a title add it to the marker's title
-            markerOptions = markerOptions.title(geoMarker.title);
-            //and in the description add the sensor with the measurement
-            description += sensorsTypeCodesNamesMap.get(geoMarker.typeCode) + ": " + geoMarker.sensorMeasurement;
+        if (geoMarker.title != null) {
+            if (!geoMarker.title.isEmpty()) {
+                //If there is a title add it to the marker's title
+                markerOptions = markerOptions.title(geoMarker.title);
+                //and in the description add the sensor with the measurement
+                description += sensorsTypeCodesNamesMap.get(geoMarker.typeCode) + ": " + geoMarker.sensorMeasurement;
+            } else {
+                //if there's no title then the sensor name with it's measurement goes to the title
+                markerOptions = markerOptions.title(sensorsTypeCodesNamesMap.get(geoMarker.typeCode) + ": " + geoMarker.sensorMeasurement);
+            }
         } else {
             //if there's no title then the sensor name with it's measurement goes to the title
             markerOptions = markerOptions.title(sensorsTypeCodesNamesMap.get(geoMarker.typeCode) + ": " + geoMarker.sensorMeasurement);
         }
-        if (geoMarker.description != null || !geoMarker.description.isEmpty()) {
-            //if there is a description add it at the description of the marker
-            description += " " + geoMarker.description;
+        if (geoMarker.description != null) {
+            if (!geoMarker.description.isEmpty()) {
+                //if there is a description add it at the description of the marker
+                description += " " + geoMarker.description;
+            }
         }
         markerOptions = markerOptions.snippet(description);
         return markerOptions;
